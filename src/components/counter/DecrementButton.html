@@ -1,0 +1,15 @@
+<button on:click="decrement()">-1</button>
+
+<script>
+  import { getActions } from 'redux-zero/svelte';
+  import store from "../../store/store";
+  import { actions } from "../../store/actions";
+
+  const { decrement } = getActions(store, actions);
+
+  export default {
+    methods: {
+      decrement
+    }
+  };
+</script>

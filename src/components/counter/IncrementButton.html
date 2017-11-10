@@ -1,0 +1,15 @@
+<button on:click="increment()">+1</button>
+
+<script>
+  import { getActions } from 'redux-zero/svelte';
+  import store from "../../store/store";
+  import { actions } from "../../store/actions";
+
+  const { increment } = getActions(store, actions);
+
+  export default {
+    methods: {
+      increment
+    }
+  };
+</script>

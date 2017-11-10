@@ -1,0 +1,26 @@
+<div>
+  <h1>{{title}}</h1>
+  <Value />
+  <IncrementButton />
+  <DecrementButton />
+</div>
+
+<script>
+  import Value from './Value.html';
+  import IncrementButton from './IncrementButton.html';
+  import DecrementButton from './DecrementButton.html';
+
+  export default {
+    components: {
+      Value,
+      IncrementButton,
+      DecrementButton
+    },
+
+    data() {
+      return {
+        title: 'Counter with redux-zero'
+      }
+    }
+  };
+</script>
