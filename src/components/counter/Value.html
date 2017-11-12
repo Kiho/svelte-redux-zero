@@ -1,21 +1,14 @@
 <h2>{{counter}}</h2>
 
 <script>
-	import { connect } from 'redux-zero/svelte';
-	import store from '../../store/store';
+	import base from './base';
 
 	const mapToProps = ({ counter }) => ({ counter });
 
 	export default {
+		data: base.data,
 		oncreate() {
-			connect(this, store, mapToProps);
+			base.oncreate(mapToProps);
 		}
-
-		// // Dummy placeholder data to suppress the warning message
-		// data() {
-		// 	return {
-		// 		counter: null
-		// 	}
-		// }
 	};
 </script>
