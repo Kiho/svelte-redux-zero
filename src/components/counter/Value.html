@@ -1,21 +1,21 @@
 <h2>{{counter}}</h2>
+<button on:click="increment2()">+2</button>
+<button on:click="decrement2()">-2</button>
 
 <script>
-	import { connect } from 'redux-zero/svelte';
-	import store from '../../store/store';
+	import store from "../../store/store";
+	import { mapActions } from "../../store/actions";
 
+	const { increment2, decrement2 } = mapActions;
 	const mapToProps = ({ counter }) => ({ counter });
 
 	export default {
 		oncreate() {
-			connect(this, store, mapToProps);
+			this.connect(mapToProps, mapActions);
+		},
+		methods: {
+			decrement2,
+			increment2
 		}
-
-		// // Dummy placeholder data to suppress the warning message
-		// data() {
-		// 	return {
-		// 		counter: null
-		// 	}
-		// }
 	};
 </script>

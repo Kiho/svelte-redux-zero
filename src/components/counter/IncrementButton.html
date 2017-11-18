@@ -1,9 +1,9 @@
 <button on:click="increment()">+1</button>
 
 <script>
-  import { getActions } from 'redux-zero/svelte';
   import store from "../../store/store";
   import { actions } from "../../store/actions";
+  import { getActions } from 'redux-zero/svelte';
 
   const { increment } = getActions(store, actions);
 

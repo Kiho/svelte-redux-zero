@@ -1,5 +1,5 @@
 declare class Svelte {
-  constructor(options: { target: Element, data?: any });
+  constructor(options: { target: Element, data?: any, store?: any });
 
   get(name: string);
   set(data: any);
