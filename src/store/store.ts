@@ -1,5 +1,6 @@
 import createStore from 'redux-zero';
-import { connect, getActions } from 'redux-zero/svelte';
+import { connect } from 'redux-zero/svelte';
+import { bindActions } from "./bindActions";
 
 const initialState = { 
   counter: 0
@@ -12,7 +13,7 @@ const init = (component, options) => {
   options.data = options.data || {};
   component.connect = (mapToProps, mapActions) => {
     if (mapActions) {
-      const actions = getActions(() => mapActions, store);
+      const actions = bindActions(mapActions, store);
       const methods = {};
       Object.keys(actions).forEach(x => {
         if (component[x]) methods[x] = actions[x];
