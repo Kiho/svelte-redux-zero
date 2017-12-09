@@ -8,9 +8,33 @@ const initialState = {
 const store = createStore(initialState);
 const context: any = store;
 
+context.create = function(ctor, target) {
+  const component = new ctor({
+    target,
+    data: store.getState()
+  });
+  return component;
+}
+
+context.destroy = function(ref){
+  ref.destroy();
+}
+
 const init = (component, options) => {
   options.data = options.data || {};
+
   component.connect = (mapToProps, mapActions) => {
+    if (component.constructor.show) {
+      component.observe('show', show => {
+        if (show) {
+          component.set({instance: component.constructor.show(component, store)});
+        } else {
+          context.destroy(component.get('instance'));
+        }
+      }, { defer: true })
+      component.on('destroy', component.get('instance'));  
+    }
+    
     if (mapActions) {
       const actions = getActions(store, mapActions);
       const methods = {};

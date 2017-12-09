@@ -6,7 +6,7 @@ import commonjs from 'rollup-plugin-commonjs';
 import buble from 'rollup-plugin-buble';
 import uglify from 'rollup-plugin-uglify';
 
-const production = !process.env.ROLLUP_WATCH;
+const production = false; // !process.env.ROLLUP_WATCH;
 
 export default {
 	input: 'src/main.ts',	
